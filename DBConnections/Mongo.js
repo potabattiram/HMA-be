@@ -3,7 +3,7 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = 'mongodb+srv://rampotabatti:DtlvNLLKOAQhEIEP@hma.rpyvgw6.mongodb.net/test';
 let client;
 
-async function main() {
+async function connectToDatabase() {
     client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
     try {
         await client.connect();
@@ -16,6 +16,6 @@ async function main() {
         // await client.close();
     }
 }
-main().catch(console.error);
+connectToDatabase().catch(console.error);
 
-module.exports = { client };
+module.exports = { client, connectToDatabase };
